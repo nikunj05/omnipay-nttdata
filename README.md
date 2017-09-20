@@ -1,4 +1,4 @@
-# Omnipay: Skrill
+# Omnipay: Nttdata
 
 **Skrill driver for the Omnipay PHP payment processing library**
 

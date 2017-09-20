@@ -1,26 +1,26 @@
 {
-    "name": "alfaproject/omnipay-skrill",
+    "name": "px/omnipay-nttdata",
     "type": "library",
-    "description": "Skrill driver for the Omnipay payment processing library",
+    "description": "NTT Data driver for the Omnipay payment processing library",
     "keywords": [
         "gateway",
         "merchant",
-        "skrill",
+        "nttdata",
         "omnipay",
         "pay",
         "payment"
     ],
-    "homepage": "https://github.com/alfaproject/omnipay-skrill",
+    "homepage": "https://github.com/nikunj05/omnipay-nttdata",
     "license": "MIT",
     "authors": [
         {
-            "name": "Joao Dias",
-            "email": "joao.dias@cherrygroup.com"
+            "name": "Nikunj Goriya",
+            "email": "nikunjgoriya@gmail.com"
         }
     ],
     "autoload": {
         "psr-0": {
-            "Omnipay\\Skrill\\": "src/"
+            "Omnipay\\Nttdata\\": "src/"
         }
     },
     "require": {

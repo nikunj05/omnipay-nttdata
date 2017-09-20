@@ -1,13 +1,13 @@
 <?php
-namespace Omnipay\Skrill\Message;
+namespace Omnipay\Nttdata\Message;
 
 /**
- * Skrill Auth Request
+ * Nttdata Auth Request
  *
  * @author Joao Dias <joao.dias@cherrygroup.com>
  * @copyright 2013-2014 Cherry Ltd.
  * @license http://opensource.org/licenses/mit-license.php MIT
- * @version 2.16 Skrill Automated Payments Interface
+ * @version 2.16 Nttdata Automated Payments Interface
  */
 abstract class AuthRequest extends Request
 {

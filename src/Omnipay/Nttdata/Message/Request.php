@@ -1,16 +1,16 @@
 <?php
-namespace Omnipay\Skrill\Message;
+namespace Omnipay\Nttdata\Message;
 
 use Omnipay\Common\Message\AbstractRequest;
 
 /**
- * Skrill Request
+ * Nttdata Request
  *
- * The Skrill Automated Payments Interface enables you to execute automated requests to
- * Skrill, including:
+ * The Nttdata Automated Payments Interface enables you to execute automated requests to
+ * Nttdata, including:
  *
  * * Send money transactions to customers
- * * Skrill 1-Tap transactions
+ * * Nttdata 1-Tap transactions
  * * Manage recurring payments
  * * Checking the status of transactions and recurring payments
  * * Downloading account histories and repost status reports
@@ -30,21 +30,12 @@ abstract class Request extends AbstractRequest
     abstract protected function getEndpoint();
 
     /**
-     * Get the action name for this request.
-     *
-     * @return string action name
-     */
-    abstract protected function getAction();
-
-    /**
      * Get the data for this request.
      *
      * @return array request data
      */
     public function getData()
     {
-        $data['action'] = $this->getAction();
-
         return $data;
     }
 
@@ -56,7 +47,9 @@ abstract class Request extends AbstractRequest
     public function sendData($data)
     {
         $url = $this->getEndpoint() . '?' . http_build_query($data);
-        $httpResponse = $this->httpClient->get($url)->send();
+        //$httpResponse = $this->httpClient->get($url)->send();
+        //CUSTOMIZING
+        $httpResponse = $this->httpClient->get(html_entity_decode($url))->send();
 
         $xml = $httpResponse->xml();
         return $this->createResponse($xml);

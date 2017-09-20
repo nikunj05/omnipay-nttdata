@@ -1,10 +1,10 @@
 <?php
-namespace Omnipay\Skrill\Message;
+namespace Omnipay\Nttdata\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 
 /**
- * Skrill Response
+ * Nttdata Response
  *
  * @author Joao Dias <joao.dias@cherrygroup.com>
  * @copyright 2013-2014 Cherry Ltd.

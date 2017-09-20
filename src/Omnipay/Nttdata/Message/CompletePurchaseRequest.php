@@ -1,5 +1,5 @@
 <?php
-namespace Omnipay\Skrill\Message;
+namespace Omnipay\Nttdata\Message;
 
 use Omnipay\Common\Exception\RuntimeException;
 use Omnipay\Common\Message\AbstractRequest;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 /**
  * Callback handler
  *
- * @package Omnipay\Skrill\Message
+ * @package Omnipay\Nttdata\Message
  */
 class CompletePurchaseRequest extends AbstractRequest
 {

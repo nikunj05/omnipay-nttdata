@@ -1,15 +1,15 @@
 <?php
 
-namespace Omnipay\Skrill\Message;
+namespace Omnipay\Nttdata\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 
 /**
- * Skrill Status Callback
+ * Nttdata Status Callback
  *
- * When the payment process is complete Skrill's payment server will send the details of
+ * When the payment process is complete Nttdata's payment server will send the details of
  * the transaction to the status URL provided by the merchant. This is done with a
- * standard HTTP POST request. The Skrill server will continue to post the status reports
+ * standard HTTP POST request. The Nttdata server will continue to post the status reports
  * until a response of HTTP OK (200) is received from the merchant's server or the number
  * of posts exceeds 10.
  *
@@ -23,14 +23,14 @@ class StatusCallback extends AbstractResponse
     /**
      * This status could be received only if the merchant's account is configured to
      * receive chargebacks. If this is the case, whenever a chargeback is received by
-     * Skrill, a -3 status will be posted on the status url for the reversed transaction.
+     * Nttdata, a -3 status will be posted on the status url for the reversed transaction.
      */
     const STATUS_CHARGEBACK = -3;
 
     /**
      * This status is sent when the customer tries to pay via Credit Card or Direct Debit
      * but our provider declines the transaction. If the merchant doesn't accept Credit
-     * Card or Direct Debit payments via Skrill then you will never receive the failed
+     * Card or Direct Debit payments via Nttdata then you will never receive the failed
      * status.
      */
     const STATUS_FAILED = -2;
@@ -43,15 +43,15 @@ class StatusCallback extends AbstractResponse
 
     /**
      * This status is sent when the customers pay via the pending bank transfer option.
-     * Such transactions will auto-process IF the bank transfer is received by Skrill. We
+     * Such transactions will auto-process IF the bank transfer is received by Nttdata. We
      * strongly recommend that you do NOT process the order/transaction in your system
-     * upon receipt of a pending status from Skrill.
+     * upon receipt of a pending status from Nttdata.
      */
     const STATUS_PENDING = 0;
 
     /**
      * This status is sent when the transaction is processed and the funds have been
-     * received on the merchant's Skrill account.
+     * received on the merchant's Nttdata account.
      */
     const STATUS_PROCESSED = 2;
 
@@ -159,7 +159,7 @@ class StatusCallback extends AbstractResponse
     }
 
     /**
-     * Get the unique ID for the merchant's Skrill account.
+     * Get the unique ID for the merchant's Nttdata account.
      *
      * ONLY needed for the calculation of the MD5 signature.
      *
@@ -171,7 +171,7 @@ class StatusCallback extends AbstractResponse
     }
 
     /**
-     * Get the unique ID for the customer's Skrill account.
+     * Get the unique ID for the customer's Nttdata account.
      *
      * To receive the customer id value, please contact your account manager or
      * merchantservices@skrill.com
@@ -194,7 +194,7 @@ class StatusCallback extends AbstractResponse
     }
 
     /**
-     * Get Skrill's unique transaction reference for the transfer.
+     * Get Nttdata's unique transaction reference for the transfer.
      *
      * @return string transaction reference
      */
@@ -209,7 +209,7 @@ class StatusCallback extends AbstractResponse
      * @param $stringFormat
      * @return float|string amount
      */
-    public function getSkrillAmount($stringFormat = false)
+    public function getNttdataAmount($stringFormat = false)
     {
         $amount = (double)$this->data['mb_amount'];
 
@@ -223,11 +223,11 @@ class StatusCallback extends AbstractResponse
     /**
      * Get the currency of skrill amount.
      *
-     * Will always be the same as the currency of the beneficiary's account at Skrill.
+     * Will always be the same as the currency of the beneficiary's account at Nttdata.
      *
      * @return string currency
      */
-    public function getSkrillCurrency()
+    public function getNttdataCurrency()
     {
         return $this->data['mb_currency'];
     }
@@ -340,8 +340,8 @@ class StatusCallback extends AbstractResponse
             $this->getMerchantId() .
             $this->getTransactionReference() .
             $this->getSecretWordForMd5Signature() .
-            $this->getSkrillAmount(true) .
-            $this->getSkrillCurrency() .
+            $this->getNttdataAmount(true) .
+            $this->getNttdataCurrency() .
             $this->getStatus()
         ));
     }
@@ -361,8 +361,8 @@ class StatusCallback extends AbstractResponse
             $this->getMerchantId() .
             $this->getTransactionReference() .
             $this->getSecretWordForMd5Signature() .
-            $this->getSkrillAmount() .
-            $this->getSkrillCurrency() .
+            $this->getNttdataAmount() .
+            $this->getNttdataCurrency() .
             $this->getStatus()
         );
     }
